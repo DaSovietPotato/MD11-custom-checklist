@@ -1,0 +1,2249 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2022 Josh Davidson (Octal450) -->
+
+<PropertyList>
+   
+   <checklist>
+		<title>SYSTEM STARTUP APU</title>
+		<page>
+			<item>
+				<name>FUEL SWITCHES</name>
+				<value>ALL OFF</value>
+				<condition>
+						<property>controls/engines/engine[0]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[1]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[2]/cutoff-switch</property>
+						<value>0</value>
+				</condition>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine[0]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+		<command>property-assign</command>
+        <property>controls/engines/engine[1]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+		<command>property-assign</command>
+        <property>controls/engines/engine[2]/cutoff-switch</property>
+        <value>1</value>
+      </binding>
+			</item>
+			<item>
+				<name>SPOILER/FLAP/SLAT Handles</name>
+				<value>DISARMED/UP</value>
+				<condition>
+				    <equals>
+						<property>controls/flight/speedbrake</property>
+						<value>0</value>
+						</equals>
+						<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake-arm</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>GEAR HANDLE</name>
+				<value>DOWN</value>
+			</item>
+			<item>
+				<name>BATTERY MASTER</name>
+				<value>ON</value>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/battery</property>
+        <value>1</value>
+      </binding>        
+			</item>
+			<item>
+				<name>BATTERY BUS</name>
+				<value>OFF EXTINGUISHED</value>
+				<condition>
+					<greater-than-equals>
+						<property>controls/electrical/lights/bat-bus</property>
+						<value>0</value>
+					</greater-than-equals>
+				</condition>
+			</item>
+			<item>
+				<name>APU</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+							<property>systems/apu/state</property>
+							<value>3</value>
+						</equals>
+				</condition>
+			</item>
+			<item>
+			    <name>APU PWR</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+							<property>controls/electrical/switches/apu-pwr</property>
+						<value>1</value>
+						</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/apu-pwr</property>
+        <value>1</value>
+		</binding>
+		    </item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>APU AIR</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+							<property>controls/pneumatics/switches/bleed-apu</property>
+						<value>1</value>
+						</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/pneumatics/switches/bleed-apu</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>AC 1-3</name>
+				<value>OFF EXTINGUISHED</value>
+				<condition>
+				<equals>
+						<property>controls/electrical/switches/ac-tie-1</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/ac-tie-1-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/ac-tie-2</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/ac-tie-2-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/ac-tie-3</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/ac-tie-3-arm</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ac-tie-1</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/ac-tie-1-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ac-tie-2</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/ac-tie-2-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ac-tie-3</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/ac-tie-3-arm</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>GEN 1-3</name>
+				<value>ARM ILLUMINATED</value>
+				<condition>
+				<equals>
+						<property>controls/electrical/switches/gen-1</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-1-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-2</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-2-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-3</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-3-arm</property>
+						<value>1</value>
+					</equals>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-1</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-1-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-2</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-2-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-3</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-3-arm</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>TRIM AIR</name>
+				<value>OFF EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/pneumatics/switches/trim-air</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/pneumatics/switches/trim-air</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>NAV 1-3</name>
+				<value>SET TO NAV</value>
+				<condition>
+					<equals>
+						<property>controls/iru[0]/switches/knob</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/iru[1]/switches/knob</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/iru[2]/switches/knob</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/iru[0]/switches/knob</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[1]/switches/knob</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[2]/switches/knob</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>FMS</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>IRS</name>
+				<value>WAIT UNTIL ALIGNMENT</value>
+				<condition>
+					<equals>
+						<property>systems/iru[0]/aligned</property>
+					<value>1</value>
+					</equals>
+					<equals>
+						<property>systems/iru[1]/aligned</property>
+					<value>1</value>
+					</equals>
+					<equals>
+						<property>systems/iru[2]/aligned</property>
+					<value>1</value>
+					</equals>
+				</condition>
+			</item>
+			<item>
+				<name>ENGINE IGNITION</name>
+				<value>OFF</value>
+				<condition>
+				    <equals>
+						<property>controls/ignition/ign-a</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>controls/ignition/ign-b</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-a</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-b</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>HYDRAILIC SYS</name>
+				<value>PRESS ILLUMINATED</value>
+				<condition>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+			</item>
+			<item>
+				<name>GEN DRIVE 1,2,3/ CABIN BUS</name>
+				<value>ALL LIGHTS EXTINGUISHED</value>
+				<condition>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-1</property>
+				<value>1</value>
+				</equals>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-2</property>
+				<value>1</value>
+				</equals>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-3</property>
+				<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/electrical/switches/cab-bus</property>
+					<value>1</value>
+				</equals>
+				</condition>
+			</item>
+			<item>
+				<name>EMERGENCY PWR</name>
+				<value>ARM</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/emer-pwr</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/emer-pwr</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>NO SMOKE</name>
+				<value>AS REQUIRED</value>
+			</item>
+			<item>
+				<name>SEAT BELTS</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+					<property>controls/switches/seatbelt-sign</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/switches/seatbelt-sign</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>	
+		<page>
+			<item>
+				<name>LANDING LIGHT</name>
+				<value>RET</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>0.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>0.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>0.0</value>
+		</binding>
+			</item>
+			<item>
+				<name>NOSE LT</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>0.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>0.0</value>
+		</binding>
+			</item>
+			<item>
+				<name>L AND R RUNWAY TURNOFF</name>
+				<value>EXTINGUISHED</value>
+			</item>
+			<item>
+				<name>LOGO</name>
+				<value>AS DESIRED</value>
+			</item>
+			<item>
+				<name>BCN AND HI-INT</name>
+				<value>OFF ILLUMINATED</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>0</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+					<equals>
+							<property>systems/apu/state</property>
+							<value>3</value>
+						</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>IGNITION OVRD</name>
+				<value>OVRD EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/ignition/ign-ovrd</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-ovrd</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAP LIMIT/ELEVATOR FEEL</name>
+				<value>AUTO, LIGHTS EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/fcc/switches/flap-limit-knob</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/fcc/switches/elevator-feel-knob</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/fcc/switches/elevator-feel-man</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/flap-limit-knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/elevator-feel-knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/elevator-feel-man</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>IN OR HP</name>
+				<value>AS REQUIRED</value>
+			</item>
+			<item>
+				<name>AFS OVRD OFF</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>it-autoflight/input/ovrd1</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>it-autoflight/input/ovrd2</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/ovrd1</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/ovrd2</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>BANK ANGLE SELECTOR</name>
+				<value>AUTO</value>
+				<condition>
+				<equals>
+					<property>it-autoflight/input/bank-limit-sw</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/bank-limit-sw</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>STATIC AIR </name>
+				<value>NORM</value>
+			</item>
+			<item>
+				<name>RUDDER AND AILERON TRIM</name>
+				<value>ZERO</value>
+				<condition>
+				<equals>
+					<property>controls/flight/rudder-trim</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/flight/aileron-trim</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/rudder-trim</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/aileron-trim</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>BAROSET</name>
+				<value>QNH</value>
+			</item>
+			<item>
+				<name>MCDU</name>
+				<value>CHECK AIRCRAFT POSITION CORRECT</value>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>TCAS</name>
+				<value>RA/TA</value>
+				<condition>
+				<equals>
+					<property>instrumentation/transponder/output/knob</property>
+					<value>3</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>instrumentation/transponder/output/knob</property>
+        <value>3</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAT T.O. SEL</name>
+				<value>AS DESIRED</value>
+			</item>
+			<item>
+				<name>AUTO BRAKE</name>
+				<value>T.O.</value>
+				<condition>
+				<equals>
+					<property>controls/gear/abs/knob</property>
+					<value>-1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/gear/abs/knob</property>
+        <value>-1</value>
+		</binding>
+			</item>
+		</page>
+    </checklist>
+	
+    <checklist>
+		<title>SYSTEM STARTUP EPU</title>
+		<page>
+			<item>
+				<name>FUEL SWITCHES</name>
+				<value>ALL OFF</value>
+				<condition>
+						<property>controls/engines/engine[0]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[1]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[2]/cutoff-switch</property>
+						<value>0</value>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine[0]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine[1]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine[2]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>SPOILER/FLAP/SLAT Handles</name>
+				<value>DISARMED/UP</value>
+				<condition>
+				    <equals>
+						<property>controls/flight/speedbrake</property>
+						<value>0</value>
+						</equals>
+						<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake-arm</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>GEAR HANDLE</name>
+				<value>DOWN</value>
+			</item>
+			<item>
+				<name>BATTERY MASTER</name>
+				<value>ON</value>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<command>property-toggle</command>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/battery</property>
+        <value>1</value>
+      </binding>        
+			</item>
+			<item>
+				<name>BATTERY BUS</name>
+				<value>OFF EXTINGUISHED</value>
+				<condition>
+					<greater-than-equals>
+						<property>controls/electrical/lights/bat-bus</property>
+						<value>0</value>
+					</greater-than-equals>
+				</condition>
+			</item>
+			<item>
+				<name>EXTERNAL POWER</name>
+				<value>CONNECTED</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/ground-cart</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ground-cart</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+			    <name>EXTERNAL AIR</name>
+				<value>CONNECTED</value>
+		    </item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>GLY EXT POWER</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/lights/extg-pwr-on</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/extg-pwr</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+			    <name>EXT PWR</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/ext-pwr</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ext-pwr</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>GEN 1-3</name>
+				<value>ARM ILLUMINATED</value>
+				<condition>
+				<equals>
+						<property>controls/electrical/switches/gen-1</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-1-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-2</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-2-arm</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/switches/gen-3</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/electrical/lights/gen-3-arm</property>
+						<value>1</value>
+					</equals>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-1</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-1-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-2</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-2-arm</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/gen-3</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/lights/gen-3-arm</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>TRIM AIR</name>
+				<value>OFF EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/pneumatics/switches/trim-air</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/pneumatics/switches/trim-air</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>NAV 1-3</name>
+				<value>SET TO NAV</value>
+				<condition>
+					<equals>
+						<property>controls/iru[0]/switches/knob</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/iru[1]/switches/knob</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>controls/iru[2]/switches/knob</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/iru[0]/switches/knob</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[1]/switches/knob</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[2]/switches/knob</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>FMS</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>IRS</name>
+				<value>WAIT UNTIL ALIGNMENT</value>
+				<condition>
+					<equals>
+						<property>systems/iru[0]/aligned</property>
+					<value>1</value>
+					</equals>
+					<equals>
+						<property>systems/iru[1]/aligned</property>
+					<value>1</value>
+					</equals>
+					<equals>
+						<property>systems/iru[2]/aligned</property>
+					<value>1</value>
+					</equals>
+				</condition>
+			</item>
+			<item>
+				<name>ENGINE IGNITION</name>
+				<value>OFF</value>
+				<condition>
+				    <equals>
+						<property>controls/ignition/ign-a</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>controls/ignition/ign-b</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-a</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-b</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>HYDRAILIC SYS</name>
+				<value>PRESS ILLUMINATED</value>
+				<condition>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<less-than>
+					<property>systems/hydraulics/sys-1-psi</property>
+					<value>2400</value>
+				    </less-than>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+			</item>
+			<item>
+				<name>GEN DRIVE 1,2,3/ CABIN BUS</name>
+				<value>ALL LIGHTS EXTINGUISHED</value>
+				<condition>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-1</property>
+				<value>1</value>
+				</equals>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-2</property>
+				<value>1</value>
+				</equals>
+				<equals>
+				<property>controls/electrical/switches/gen-drive-3</property>
+				<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/electrical/switches/cab-bus</property>
+					<value>1</value>
+				</equals>
+				</condition>
+			</item>
+			<item>
+				<name>EMERGENCY PWR</name>
+				<value>ARM</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/emer-pwr</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/emer-pwr</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>NO SMOKE</name>
+				<value>AS REQUIRED</value>
+			</item>
+			<item>
+				<name>SEAT BELTS</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+					<property>controls/switches/seatbelt-sign</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/switches/seatbelt-sign</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>	
+		<page>
+			<item>
+				<name>LANDING LIGHT</name>
+				<value>RET</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>0.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>0.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>0.0</value>
+		</binding>
+			</item>
+			<item>
+				<name>NOSE LT</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>0.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>0.0</value>
+		</binding>
+			</item>
+			<item>
+				<name>L AND R RUNWAY TURNOFF</name>
+				<value>EXTINGUISHED</value>
+			</item>
+			<item>
+				<name>LOGO</name>
+				<value>AS DESIRED</value>
+			</item>
+			<item>
+				<name>BCN AND HI-INT</name>
+				<value>OFF ILLUMINATED</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>0</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+					<equals>
+					<property>controls/electrical/lights/ext-pwr-on</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>IGNITION OVRD</name>
+				<value>OVRD EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/ignition/ign-ovrd</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-ovrd</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAP LIMIT/ELEVATOR FEEL</name>
+				<value>AUTO, LIGHTS EXTINGUISHED</value>
+				<condition>
+				<equals>
+					<property>controls/fcc/switches/flap-limit-knob</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/fcc/switches/elevator-feel-knob</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/fcc/switches/elevator-feel-man</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/flap-limit-knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/elevator-feel-knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/fcc/switches/elevator-feel-man</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>IN OR HP</name>
+				<value>AS REQUIRED</value>
+			</item>
+			<item>
+				<name>AFS OVRD OFF</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>it-autoflight/input/ovrd1</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>it-autoflight/input/ovrd2</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/ovrd1</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/ovrd2</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>BANK ANGLE SELECTOR</name>
+				<value>AUTO</value>
+				<condition>
+				<equals>
+					<property>it-autoflight/input/bank-limit-sw</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>it-autoflight/input/bank-limit-sw</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>STATIC AIR </name>
+				<value>NORM</value>
+			</item>
+			<item>
+				<name>RUDDER AND AILERON TRIM</name>
+				<value>ZERO</value>
+				<condition>
+				<equals>
+					<property>controls/flight/rudder-trim</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/flight/aileron-trim</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/rudder-trim</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/aileron-trim</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>BAROSET</name>
+				<value>QNH</value>
+			</item>
+			<item>
+				<name>MCDU</name>
+				<value>CHECK AIRCRAFT POSITION CORRECT</value>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>TCAS</name>
+				<value>RA/TA</value>
+				<condition>
+				<equals>
+					<property>instrumentation/transponder/output/knob</property>
+					<value>3</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>instrumentation/transponder/output/knob</property>
+        <value>3</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAT T.O. SEL</name>
+				<value>AS DESIRED</value>
+			</item>
+			<item>
+				<name>AUTO BRAKE</name>
+				<value>T.O.</value>
+				<condition>
+				<equals>
+					<property>controls/gear/abs/knob</property>
+					<value>-1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/gear/abs/knob</property>
+        <value>-1</value>
+		</binding>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>COCKPIT PREPARATION</title>
+		<page>
+			<item>
+				<name>SD STATUS PAGE</name>
+				<value>CHECKED</value>
+			</item>
+			<item>
+				<name>HYDRAULICS PANEL</name>
+				<value>AUTO/MAN CHECKED</value>
+			</item>
+			<item>
+				<name>FUEL PANEL</name>
+				<value>AUTO/MAN CHECKED</value>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>NAV/LOGO LIGHT ON, SET</value>
+			</item>
+			<item>
+				<name>EVAC COMMAND</name>
+				<value>ARMED</value>
+			</item>
+			<item>
+				<name>OXYGEN SYS AND MASKS</name>
+				<value>CHECKED, 100%</value>
+			</item>
+			<item>
+				<name>T/O WARNING</name>
+				<value>CHECKED</value>
+			</item>
+			<item>
+				<name>CONTINUED ON NEXT PAGE...</name>
+				<value> </value>
+			</item>
+		</page>
+		<page>
+			<item>
+				<name>FLAPS T/O SEL</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>FCP</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>IRS</name>
+				<value>TAXI</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>BEFORE START</title>
+		<page>
+			<item>
+				<name>DOORS / WINDOWS</name>
+				<value>CLOSED AND LOCKED</value>
+			</item>
+			<item>
+				<name>PARK BRAKE</name>
+				<value>AS REQ: SET OR OFF</value>
+			</item>
+			<item>
+				<name>BEACON</name>
+				<value>ON</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>IGNITION</name>
+				<value>A OR B, SET</value>
+				<condition>
+					<or>
+						<equals>
+						<property>controls/ignition/ign-a</property>
+						<value>1</value>
+					    </equals>
+					    <equals>
+						<property>controls/ignition/ign-b</property>
+						<value>1</value>
+					    </equals>
+					</or>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/ignition/ign-a</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>FUEL PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>AIR PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>STARTUP</title>
+		<page>
+			<item>
+				<name>ENGINE 3 STARTER</name>
+				<value>ENGAGED</value>
+			</item>
+			<item>
+				<name>WHEN N2 > 15%</name>
+				<value>ENGINE 3 FUEL SWITCH ON</value>
+			</item>
+			<item>
+				<name>ENGINE 1 STARTER</name>
+				<value>ENGAGED</value>
+			</item>
+			<item>
+				<name>WHEN N2 > 15%</name>
+				<value>ENGINE 1 FUEL SWITCH ON</value>
+			</item>
+			<item>
+				<name>ENGINE 2 STARTER</name>
+				<value>ENGAGED</value>
+			</item>
+			<item>
+				<name>WHEN N2 > 15%</name>
+				<value>ENGINE 2 FUEL SWITCH ON</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>AFTER START</title>
+		<page>
+			<item>
+				<name>ANTI ICE</name>
+				<value>AS REQ</value>
+			</item>
+			<item>
+				<name>AIR PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>APU</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+							<property>systems/apu/state</property>
+							<value>0</value>
+						</equals>
+				</condition>
+			</item>
+			<item>
+				<name>EXTERNAL POWER</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/lights/ext-pwr-on</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ext-pwr</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>EXTERNAL POWER UNIT AND AIR</name>
+				<value>DISCONNECTED</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/ground-cart</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/ground-cart</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>HYD PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>GROUND EQUIP / GEAR PINS</name>
+				<value>CLEAR, REMOVED</value>
+			</item>
+			<item>
+				<name>CABIN</name>
+				<value>READY</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>TAXI</title>
+		<page>
+			<item>
+				<name>FLAPS</name>
+				<value>FLAPS SET ___</value>
+			</item>
+			<item>
+				<name>SPOILERS</name>
+				<value>ARMED</value>
+				<condition>
+				    <equals>
+						<property>controls/flight/speedbrake</property>
+						<value>0</value>
+						</equals>
+						<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake-arm</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLIGHT CONTROLS</name>
+				<value>CHECKED</value>
+			</item>
+			<item>
+				<name>STAB TRIM</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>T/O DATA</name>
+				<value>CONFIRM V1 __</value>
+				<value>CONFIRM VR __</value>
+				<value>CONFIRM V2 __</value>
+				<value>CONFIRMED, SET</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>BEFORE TAKEOFF</title>
+		<page>
+			<item>
+				<name>EAD</name>
+				<value>SET</value>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>LANDING, TURNOFF, HI-INT ON</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+				</greater-than-equals>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>1.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>1.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>1.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>AIR PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>WX RADAR / TRANSPONDER</name>
+				<value>SET, SET</value>
+				<condition>
+				<equals>
+					<property>instrumentation/transponder/output/knob</property>
+					<value>3</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>instrumentation/transponder/output/knob</property>
+        <value>3</value>
+		</binding>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>AFTER TAKEOFF</title>
+		<page>
+			<item>
+				<name>GEAR AND GEAR LIGHTS</name>
+				<value>UP, OFF</value>
+			</item>
+			<item>
+				<name>AIR PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>SPOILERS</name>
+				<value>DISARMED</value>
+				<condition>
+				    <equals>
+						<property>controls/flight/speedbrake</property>
+						<value>0</value>
+						</equals>
+						<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake-arm</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>AUTOBRAKE</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/gear/abs/knob</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/gear/abs/knob</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAPS / SLATS</name>
+				<value>RETRACED</value>
+			</item>
+			<item>
+				<name>HYD PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>FUEL PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>EAD</name>
+				<value>CHECKED</value>
+			</item>
+			<item>
+				<name>SEATBELTS</name>
+				<value>CHECKED, SET</value>
+				<condition>
+				<equals>
+					<property>controls/switches/seatbelt-sign</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/switches/seatbelt-sign</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>BEACON, HI-INT ON, CHECKED</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>1</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>ALTIMETER</name>
+				<value>____ SET / CROSSCHECKED</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>APPROACH / DESCENT</title>
+		<page>
+			<item>
+				<name>LANDING DATA</name>
+				<value>CONFIRM VREF ___</value>
+				<value>CHECKED, SET</value>
+			</item>
+			<item>
+				<name>ANTI-ICE</name>
+				<value>AS REQ</value>
+			</item>
+			<item>
+				<name>DH / MDA</name>
+				<value>____, SET</value>
+			</item>
+			<item>
+				<name>SEATBELTS</name>
+				<value>CHECKED, SET</value>
+				<condition>
+				<equals>
+					<property>controls/switches/seatbelt-sign</property>
+					<value>1</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/switches/seatbelt-sign</property>
+        <value>1</value>
+		</binding>
+			</item>
+			<item>
+				<name>ALTIMETER</name>
+				<value>____ SET / CROSSCHECKED</value>
+			</item>
+			<item>
+				<name>HYD PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>LANDING LIGHTS ON, HI-INT ON, CHECKED</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>1.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>1.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>1.0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>1.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>1</value>
+		</binding>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>AFTER LANDING</title>
+		<page>
+			<item>
+				<name>SPOILERS</name>
+				<value>RETRACTED</value>
+				<condition>
+				    <equals>
+						<property>controls/flight/speedbrake</property>
+						<value>0</value>
+						</equals>
+						<equals>
+						<property>controls/flight/speedbrake-arm</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/flight/speedbrake-arm</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>FLAPS / SLATS</name>
+				<value>UP, RETRACTED</value>
+			</item>
+			<item>
+				<name>WX RADAR / TRANSPONDER</name>
+				<value>OFF, AS REQ</value>
+				<condition>
+				<equals>
+					<property>instrumentation/transponder/output/knob</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>instrumentation/transponder/output/knob</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>AUTOBRAKE</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/gear/abs/knob</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/gear/abs/knob</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>STAB TRIM</name>
+				<value>3 ANU</value>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>LANDING LIGHTS OFF, HI-INT OFF, TAXI LIGHTS ON, SET</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>0</value>
+				</equals>
+				<greater-than-equals>
+						<property>systems/electrical/bus/dc-bat</property>
+						<value>24</value>
+					</greater-than-equals>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>0.5</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>0.5</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>0.5</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>0.5</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>0.5</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>0.5</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>ANTI-ICE</name>
+				<value>OFF</value>
+			</item>
+			<item>
+				<name>APU OR EXT POWER</name>
+				<value>ON</value>
+				<condition>
+						<or>
+						<equals>
+						<property>controls/electrical/switches/apu-pwr</property>
+						<value>1</value>
+						</equals>
+					    <equals>
+						<property>controls/electrical/switches/ext-pwr</property>
+						<value>1</value>
+						</equals>
+					</or>
+				</condition>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>PARKING</title>
+		<page>
+			<item>
+				<name>ANTI-ICE</name>
+				<value>OFF</value>
+			</item>
+			<item>
+				<name>HYD PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>FUEL SWITCHES</name>
+				<value>OFF</value>
+				<condition>
+						<property>controls/engines/engine[0]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[1]/cutoff-switch</property>
+						<value>0</value>
+						<property>controls/engines/engine[2]/cutoff-switch</property>
+						<value>0</value>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine[0]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+		<command>property-assign</command>
+        <property>controls/engines/engine[1]/cutoff-switch</property>
+        <value>1</value>
+		</binding>
+		<binding>
+		<command>property-assign</command>
+        <property>controls/engines/engine[2]/cutoff-switch</property>
+        <value>1</value>
+      </binding>
+			</item>
+			<item>
+				<name>SEATBELTS</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/switches/seatbelt-sign</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/switches/seatbelt-sign</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>FUEL PANEL</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>EMER PWR</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/electrical/switches/emer-pwr</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/emer-pwr</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>EXTERIOR LIGHTS</name>
+				<value>BEACON OFF</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>PARK BRK, CHOCKS</name>
+				<value>OFF, SET</value>
+				<condition>
+				<equals>
+					<property>controls/gear/brake-parking</property>
+					<value>0</value>
+				</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/gear/brake-parking</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>IRS</name>
+				<value>OFF</value>
+				<condition>
+					<equals>
+						<property>systems/iru[0]/aligned</property>
+					<value>0</value>
+					</equals>
+					<equals>
+						<property>systems/iru[1]/aligned</property>
+					<value>0</value>
+					</equals>
+					<equals>
+						<property>systems/iru[2]/aligned</property>
+					<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/iru[0]/switches/knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[1]/switches/knob</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/iru[2]/switches/knob</property>
+        <value>0</value>
+		</binding>
+			</item>
+			<item>
+				<name>SD STATUS</name>
+				<value>REVIEWED</value>
+			</item>
+		</page>
+    </checklist>
+	
+	<checklist>
+		<title>LEAVING A/C</title>
+		<page>
+			<item>
+				<name>EXTERNAL LIGHTS</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+					<property>controls/lighting/strobe</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/beacon</property>
+					<value>0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-l</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-r</property>
+					<value>0.0</value>
+				</equals>
+				<equals>
+					<property>controls/lighting/landing-light-n</property>
+					<value>0.0</value>
+				</equals>
+				</condition>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-l</property>
+        <value>0.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-r</property>
+        <value>0.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/landing-light-n</property>
+        <value>0.0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/strobe</property>
+        <value>0</value>
+		</binding>
+		<binding>
+        <command>property-assign</command>
+        <property>controls/lighting/beacon</property>
+        <value>0</value>
+		</binding>		
+			</item>
+			<item>
+				<name>EVAC CMD</name>
+				<value>AUTO / MAN SET</value>
+			</item>
+			<item>
+				<name>APU</name>
+				<value>OFF</value>
+				<condition>
+				<equals>
+							<property>systems/apu/state</property>
+							<value>0</value>
+						</equals>
+				</condition>
+			</item>
+			<item>
+				<name>BAT</name>
+				<value>OFF</value>
+				<condition>
+					<equals>
+						<property>controls/electrical/switches/battery</property>
+						<value>0</value>
+					</equals>
+				</condition>
+				<binding>
+        <command>property-assign</command>
+        <property>controls/electrical/switches/battery</property>
+        <value>0</value>
+      </binding>
+			</item>
+		</page>
+    </checklist>
+
+</PropertyList>
